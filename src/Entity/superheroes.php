@@ -2,16 +2,20 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints as Assert;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="superheroes")
- * @ApiResource()
+ * @ApiResource(
+ *   normalizationContext={"groups" = {"read"}},
+ *   denormalizationContext={"groups" = {"write"}}
+ * )
  */
 class superheroes
 {
@@ -19,28 +23,33 @@ class superheroes
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
+     * @Groups({"read"})
      */
     private ?int $id = null;
 
     /**
      * @ORM\Column(length=70)
      * @Assert\NotBlank()
+     * @Groups({"read", "write"})
      */
     public string $name;
 
     /**
      * @ORM\Column(length=70, unique=true)
      * @Assert\NotBlank()
+     * @Groups({"read", "write"})
      */
     public string $slug;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"read", "write"})
      */
     public bool $featured = false;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"read"})
      */
     public ?\DateTime $created_at = null;
 
