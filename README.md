@@ -51,6 +51,17 @@ _Примечание . Если у вас есть проблемы с отоб
       @ApiResource(
          attributes={"route_prefix"="/dc"},
 
+7. Доступ к определенным конечным точкам API
+
+Для этого нам нужно указать itemOperations вручную
+
+      @ApiResource(
+         itemOperations={"get", "delete"}
+      )
+
+Чтобы узнать больше о itemOperations и collectionOperations , вы можете обратиться
+к [официальной документации](http://api-platform.com/docs/core/operations/)
+
 
 
 

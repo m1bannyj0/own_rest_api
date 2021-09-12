@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="superheroes")
  * @ApiResource(
+ *     itemOperations={"get", "delete"},
  *   normalizationContext={"groups" = {"read"}},
  *   denormalizationContext={"groups" = {"write"}}
  * )
