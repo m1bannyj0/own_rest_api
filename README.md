@@ -43,4 +43,15 @@ _Примечание . Если у вас есть проблемы с отоб
       php bin/console cache:clear --no-warmup --env=dev
       php bin/console cache:warmup --env=dev
 
+6. Добавление префикса маршрута
+
+   Добавить префикс маршрута довольно просто. Все, что вам нужно сделать, это добавить правильную аннотацию. Следуя
+   примеру **src/Entity/media.php**, мы добавили атрибут, "route_prefix"="/dc"
+
+      @ApiResource(
+         attributes={"route_prefix"="/dc"},
+
+
+
+
 

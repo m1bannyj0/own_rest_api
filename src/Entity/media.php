@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Entity
  * @ORM\Table(name="media")
  * @ApiResource(
+ *   attributes={"route_prefix"="/dc"},
  *   iri="http://schema.org/ImageObject",
  *   normalizationContext={"groups" = {"read"}},
  *   collectionOperations={
